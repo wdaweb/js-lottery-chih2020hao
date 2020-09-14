@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>威力彩產生器</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      div {
+        width: 250px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background: deepskyblue;
+        font-size: 1.2rem;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div">A區號碼:，B區號碼:</div>
+    <button id="btn">產生威力彩號碼</button>
+    <script>
+      var btn = document.getElementById("btn");
+      var div = document.getElementById("div");
+      const rand = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+      btn.onclick = function () {
+        let x = rand(1, 38);
+        let y = [];
+        for (let i = 1; i <= 6; i++) {
+          x = rand(1, 38);
+          if (y.includes(x)) {
+            i--;
+          } else {
+            y.push(x);
+          }
+        }
+        y = y.join("、");
+        div.innerText = "A區號碼:" + y + "，B區號碼:" + rand(1, 8);
+      };
+    </script>
+  </body>
+</html>
